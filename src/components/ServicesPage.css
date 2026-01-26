@@ -1,0 +1,100 @@
+.services-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.services-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.services-hero p {
+  font-size: 1.3rem;
+}
+
+.services-list {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+}
+
+.service-item {
+  background: white;
+  border-radius: 10px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateX(5px);
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  flex-shrink: 0;
+}
+
+.service-content h3 {
+  font-size: 1.8rem;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.service-content p {
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.service-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.service-content ul li {
+  padding: 0.5rem 0;
+  color: #666;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.service-content ul li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.cta-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .service-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .services-hero h1 {
+    font-size: 2rem;
+  }
+}
