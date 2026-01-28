@@ -179,7 +179,7 @@ function Portfolio() {
             <div className="stat-item">
               <div className="stat-icon">🌍</div>
               <div className="stat-value">25+</div>
-              <div className="stat-text">Countries Served</div>
+              <div className="stat-text">Countr ies Served</div>
             </div> */}
           </div>
         </div>
