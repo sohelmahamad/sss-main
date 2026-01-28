@@ -1,93 +1,100 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Navigation.css'
-<<<<<<< HEAD
 import ssstechimage from '../images/new--sss--logo.png'
-=======
-import ssstechimage from '../images/sss_technologies_logo.png'
->>>>>>> 3e707ed95b13309c75578059b3c679987a99a31e
 
 function Navigation({ currentPage, setCurrentPage }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [scrolled])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
 
   const handleNavClick = (e, page) => {
     e.preventDefault()
     setCurrentPage(page)
     setMenuOpen(false)
+    
+    // Scroll to top first
+    scrollToTop()
+    
+    // If the page has a corresponding section (not home), scroll to it after a delay
+    if (page !== 'home') {
+      setTimeout(() => {
+        const element = document.getElementById(page)
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      }, 300) // Delay to allow scroll to top to complete
+    }
   }
 
+  const navItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'services', label: 'Services' },
+    { id: 'about', label: 'About Us' },
+    { id: 'who-we-are', label: 'Who We Are' },
+    { id: 'career', label: 'Career' },
+    { id: 'contact', label: 'Contact' },
+  ]
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <div className="logo"><img src={ssstechimage} alt='sss-technologies' /> </div>
+        <div className="logo">
+          <img 
+            src={ssstechimage} 
+            alt="SSS Technologies" 
+            className="logo-img"
+            onClick={() => {
+              setCurrentPage('home')
+              scrollToTop()
+            }}
+            style={{ cursor: 'pointer' }}
+          />
+        </div>
         
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-          ☰
+        <button 
+          className={`menu-toggle ${menuOpen ? 'active' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
         </button>
 
-        <ul className={`nav-menu ${ menuOpen ? 'active' : ''}`}>
-          <li>
-            <a 
-              href="#home" 
-              className={currentPage === 'home' ? 'active' : ''}
-              onClick={(e) => handleNavClick(e, 'home')}
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#services" 
-              className={currentPage === 'services' ? 'active' : ''}
-              onClick={(e) => handleNavClick(e, 'services')}
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#about" 
-              className={currentPage === 'about' ? 'active' : ''}
-              onClick={(e) => handleNavClick(e, 'about')}
-            >
-              About Us
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#who-we-are" 
-              className={currentPage === 'who-we-are' ? 'active' : ''}
-              onClick={(e) => handleNavClick(e, 'who-we-are')}
-            >
-              Who We Are
-            </a>
-          </li>
-          {/* <li>
-            <a 
-              href="#portfolio" 
-              className={currentPage === 'portfolio' ? 'active' : ''}
-              onClick={(e) => handleNavClick(e, 'portfolio')}
-            >
-              Portfolio
-            </a>
-          </li> */}
-          <li>
-            <a 
-              href="#career" 
-              className={currentPage === 'career' ? 'active' : ''}
-              onClick={(e) => handleNavClick(e, 'career')}
-            >
-              Career
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#contact" 
-              className={currentPage === 'contact' ? 'active' : ''}
-              onClick={(e) => handleNavClick(e, 'contact')}
-            >
-              Contact
-            </a>
-          </li>
+        <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+          {navItems.map((item) => (
+            <li key={item.id} className="nav-item">
+              <a 
+                href={`#${item.id}`}
+                className={`nav-link ${currentPage === item.id ? 'active' : ''}`}
+                onClick={(e) => handleNavClick(e, item.id)}
+              >
+                {item.label}
+                <span className="link-underline"></span>
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

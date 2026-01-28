@@ -4,21 +4,48 @@ import './HomePage.css'
 function HomePage({ setCurrentPage }) {
   return (
     <div className="page">
-      <section className="hero">
-        <div className="hero-content">
-          <h1>Welcome to SSS Technologies</h1>
-          <p>Your Trusted IT Partner for Digital Transformation</p>
-          <button className="cta-button" onClick={() => setCurrentPage('services')}>
-            Explore Our Services
-          </button>
+ 
+<div className="page">
+      {/* New Hero Section matching the image */}
+      <section className="digital-agency-hero">
+        <div className="container">
+          <div className="hero-content">
+            <h1>Web Design, eCommerce & Digital Marketing</h1>
+            <p className="hero-description">
+              A full-service digital agency with capabilities across web design and development, 
+              eCommerce, and digital marketing.
+            </p>
+            <button className="hero-button">View Our Services</button>
+            <div className="stats">
+              <div className="stat-item">
+                <span className="stat-number">300+</span>
+                <span className="stat-label">Satisfied Clients</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-<<<<<<< HEAD
-      
-=======
 
->>>>>>> 3e707ed95b13309c75578059b3c679987a99a31e
-      <section className="features">
+      {/* Client Logos Section */}
+      <section className="client-logos">
+        <div className="container">
+          <div className="logos-title">
+            <p>Some of companies we've worked with</p>
+            <div className="divider"></div>
+          </div>
+          <div className="logos-grid">
+            <div className="logo-item">Superior PALMS</div>
+            <div className="logo-item">SUPERIOR LAND DEVELOPMENT</div>
+            <div className="logo-item">MANN LAW FIRM</div>
+            <div className="logo-item">COX LAW OFFICE</div>
+          </div>
+        </div>
+      </section>
+
+   
+    </div>
+
+   <section className="features">
         <div className="container">
           <h2>Why Choose Us</h2>
           <div className="features-grid">
@@ -41,6 +68,7 @@ function HomePage({ setCurrentPage }) {
         </div>
       </section>
 
+
       <section className="about">
         <div className="container">
           <h2>About SSS Technologies</h2>
@@ -53,6 +81,14 @@ Our core strength lies in creating high-speed eCommerce stores, business website
           </p>
         </div>
       </section>
+         <section className="cta-section">
+        <div className="container">
+          <h2>Ready to Transform Your Business?</h2>
+          <p>Contact us today to discuss how we can help you achieve your IT goals.</p>
+          <button className="cta-button">Get in Touch</button>
+        </div>
+      </section>
+
     </div>
   )
 }
