@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Navigation.css'
-import ssstechimage from '../images/sss_technologies_logo.png'
+import ssstechimage from '../images/sss_technologies_new_logo.png'
 
 function Navigation({ currentPage, setCurrentPage }) {
   const [menuOpen, setMenuOpen] = useState(false)
