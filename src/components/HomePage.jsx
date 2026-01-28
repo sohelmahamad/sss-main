@@ -13,7 +13,11 @@ function HomePage({ setCurrentPage }) {
           </button>
         </div>
       </section>
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 3e707ed95b13309c75578059b3c679987a99a31e
       <section className="features">
         <div className="container">
           <h2>Why Choose Us</h2>
