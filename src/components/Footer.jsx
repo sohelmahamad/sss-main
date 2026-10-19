@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css'
-import ssstechimage from '../images/new--sss--logo.png'
+import ssstechimage from '../images/sss__new__image.png'
 import { 
   FaLinkedin, 
   FaTwitter, 
