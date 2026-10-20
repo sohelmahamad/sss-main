@@ -6,7 +6,6 @@ import AboutUs from './components/AboutUs'
 import WhoWeAre from './components/WhoWeAre'
 import Contact from './components/Contact'
 import Career from './components/Career'
-// import Portfolio from './components/Portfolio'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -28,8 +27,6 @@ function App() {
         return <Contact />
       case 'career':
         return <Career />
-      // case 'portfolio':
-      //   return <Portfolio />
       default:
         return <HomePage setCurrentPage={setCurrentPage} />
     }

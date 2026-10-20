@@ -1,23 +1,45 @@
 import React from 'react'
 import './Footer.css'
-import ssstechimage from '../images/new--sss--logo.png'
-import { 
-  FaLinkedin, 
-  FaTwitter, 
-  FaFacebookF, 
-  FaInstagram, 
-  FaYoutube, 
-  FaGithub,
+import ssstechimage from '../images/sss__new__image.png'
+import {
+  FaLinkedinIn,
+  FaTwitter,
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
   FaHome,
-  FaCogs,
+  FaCog,
   FaInfoCircle,
   FaUsers,
   FaBriefcase,
-  FaRocket,
-  FaPhone,
-  FaEnvelope,
-  FaMapMarkerAlt
+  FaRegFileAlt,
+  FaPhoneAlt,
+  FaRegEnvelope,
+  FaMapMarkerAlt,
+  FaChevronRight,
+  FaRegCopyright
 } from 'react-icons/fa'
+
+const quickLinks = [
+  { page: 'home', label: 'Home', icon: FaHome },
+  { page: 'services', label: 'Services', icon: FaCog },
+  { page: 'about', label: 'About Us', icon: FaInfoCircle },
+  { page: 'who-we-are', label: 'Who We Are', icon: FaUsers },
+  { page: 'career', label: 'Career', icon: FaBriefcase }
+]
+
+const morePages = [
+  { page: 'gallery', label: 'Gallery', icon: FaRegFileAlt },
+  { page: 'contact', label: 'Contact', icon: FaPhoneAlt }
+]
+
+const socials = [
+  { name: 'LinkedIn', icon: FaLinkedinIn, href: '#' },
+  { name: 'Twitter', icon: FaTwitter, href: '#' },
+  { name: 'Facebook', icon: FaFacebookF, href: '#' },
+  { name: 'Instagram', icon: FaInstagram, href: '#' },
+  { name: 'YouTube', icon: FaYoutube, href: '#' }
+]
 
 function Footer({ setCurrentPage }) {
   const handleNavClick = (e, page) => {
@@ -26,116 +48,126 @@ function Footer({ setCurrentPage }) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const renderLinks = (links) =>
+    links.map(({ page, label, icon: Icon }) => (
+      <li key={page}>
+        <a href={`#${page}`} onClick={(e) => handleNavClick(e, page)}>
+          <Icon className="link-icon" />
+          <span className="link-label">{label}</span>
+          <FaChevronRight className="link-arrow" />
+        </a>
+      </li>
+    ))
+
   return (
     <footer className="footer">
-      <div className="footer-container">
-        <div className="footer-content">
-          <div className="footer-section">
-            <div className="footer-brand">
-              <h3 className="footer-logo logo"> <img 
-                          src={ssstechimage} 
-                          alt="SSS Technologies" 
-                          className="logo-img"
-                        /></h3>
-              <p className="footer-tagline">Your Trusted IT Partner for Digital Transformation</p>
-            </div>
+      <div className="footer-main">
+        {/* Bottom-left orange wave */}
+        <svg
+          className="wave wave-left"
+          viewBox="0 0 160 70"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="orangeL" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stopColor="#ffb21f" />
+              <stop offset="1" stopColor="#f26a1b" />
+            </linearGradient>
+          </defs>
+          <path d="M0,0 C50,12 95,52 160,70 L0,70 Z" fill="#0b3f95" />
+          <path d="M0,34 C40,44 80,62 140,70 L0,70 Z" fill="url(#orangeL)" />
+        </svg>
+
+        <div className="footer-container footer-content">
+          {/* Brand */}
+          <div className="footer-section footer-brand-section">
+            <img src={ssstechimage} alt="SSS Technologies" className="logo-img-footer" />
+            <p className="footer-tagline">
+              Your Trusted IT Partner for Digital Transformation
+            </p>
             <div className="footer-social">
-             <a href="#" className="social-link linkedin" aria-label="LinkedIn">
-  <i className="fab fa-linkedin social-icon"></i>
-  <span className="social-text">LinkedIn</span>
-</a>
-<a href="#" className="social-link twitter" aria-label="Twitter">
-  <i className="fab fa-twitter social-icon"></i>
-  <span className="social-text">Twitter</span>
-</a>
-<a href="#" className="social-link facebook" aria-label="Facebook">
-  <i className="fab fa-facebook-f social-icon"></i>
-  <span className="social-text">Facebook</span>
-</a>
-             
+              {socials.map(({ name, icon: Icon, href }) => (
+                <a key={name} href={href} className="social-link" aria-label={name}>
+                  <Icon />
+                </a>
+              ))}
             </div>
           </div>
 
+          {/* Quick Links */}
           <div className="footer-section">
             <h4 className="footer-heading">Quick Links</h4>
-            <ul className="footer-links">
-              <li>
-                <a href="#home" onClick={(e) => handleNavClick(e, 'home')}>
-                  <FaHome className="link-icon" />
-                  <span>Home</span>
-                </a>
-              </li>
-              <li>
-                <a href="#services" onClick={(e) => handleNavClick(e, 'services')}>
-                  <FaCogs className="link-icon" />
-                  <span>Services</span>
-                </a>
-              </li>
-              <li>
-                <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>
-                  <FaInfoCircle className="link-icon" />
-                  <span>About Us</span>
-                </a>
-              </li>
-              <li>
-                <a href="#who-we-are" onClick={(e) => handleNavClick(e, 'who-we-are')}>
-                  <FaUsers className="link-icon" />
-                  <span>Who We Are</span>
-                </a>
-              </li>
-            </ul>
+            <ul className="footer-links">{renderLinks(quickLinks)}</ul>
           </div>
 
+          {/* More Pages */}
           <div className="footer-section">
-            <h4 className="footer-heading">More Pages</h4>
-            <ul className="footer-links">
-              <li>
-                <a href="#career" onClick={(e) => handleNavClick(e, 'career')}>
-                  <FaRocket className="link-icon" />
-                  <span>Career</span>
-                </a>
-              </li>
-              <li>
-                <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>
-                  <FaPhone className="link-icon" />
-                  <span>Contact</span>
-                </a>
-              </li>
-            </ul>
+            <h4 className="footer-heading">Contact Us</h4>
+            <ul className="footer-links">{renderLinks(morePages)}</ul>
           </div>
 
+          {/* Contact Info */}
           <div className="footer-section">
             <h4 className="footer-heading">Contact Info</h4>
             <ul className="footer-contact">
               <li>
-                <FaMapMarkerAlt className="contact-icon" />
-                <div>
-                  1-1-04 Beside First cry, <br/>
-                  White field, <br/>
-                  Bangalore.
-                </div>
+                <span className="contact-icon">
+                  <FaMapMarkerAlt />
+                </span>
+                <address>
+                  1-1-404,
+                  Beside First Cry,
+                  White Field,
+                  <br />
+                  Bangalore - 560066
+                 </address>
               </li>
               <li>
-                <FaEnvelope className="contact-icon" />
-                <a href="mailto:ssstechnologies@gmail.com">ssstechnologies@gmail.com</a>
+                <span className="contact-icon">
+                  <FaRegEnvelope />
+                </span>
+                <a href="mailto:ssstechnologies.in@gmail.com">
+                  ssstechnologies@gmail.com
+                </a>
               </li>
               <li>
-                <FaPhone className="contact-icon" />
-                <a href="tel:+919493507748">+91 9493507748</a>
+                <span className="contact-icon">
+                  <FaPhoneAlt />
+                </span>
+                <a href="tel:+919035907748">+91 9493507748</a>
               </li>
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="footer-divider"></div>
+      <div className="footer-bottom">
+        {/* Bottom-right orange wave */}
+        <svg
+          className="wave wave-right"
+          viewBox="0 0 220 90"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="orangeR" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stopColor="#f26a1b" />
+              <stop offset="1" stopColor="#ffb21f" />
+            </linearGradient>
+          </defs>
+          <path d="M220,0 C190,45 120,78 40,90 L220,90 Z" fill="#0b3f95" />
+          <path d="M220,22 C195,55 150,78 90,90 L220,90 Z" fill="url(#orangeR)" />
+        </svg>
 
-        <div className="footer-bottom">
-          <p className="footer-copyright">&copy; 2026 SSS Technologies. All rights reserved.</p>
+        <div className="footer-container footer-bottom-inner">
+          <p className="footer-copyright">
+            <FaRegCopyright className="copyright-icon" />
+            {new Date().getFullYear()} SSS Technologies. All rights reserved.
+          </p>
           <div className="footer-bottom-links">
             <a href="#">Privacy Policy</a>
-            <span className="divider">|</span>
             <a href="#">Terms of Service</a>
-            <span className="divider">|</span>
             <a href="#">Cookie Policy</a>
           </div>
         </div>
