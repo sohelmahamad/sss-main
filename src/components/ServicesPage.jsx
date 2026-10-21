@@ -518,7 +518,7 @@ function ServicesPage() {
           <span className="eyebrow">LET'S BUILD SOMETHING GREAT</span>
           <h2>Your next big idea starts here.</h2>
           <p>Have a project in mind? Let’s find the right technology and build something exceptional together.</p>
-          <a className="cta-button" href="mailto:hello@yourbrand.com">Let’s Talk About Your Project <span aria-hidden="true">↗</span></a>
+          <a className="cta-button" href="mailto:mahamadsohel654@gmail.com">Let’s Talk About Your Project <span aria-hidden="true">↗</span></a>
         </div>
         <div className="cta-trust-row">
           <span>✦ Scalable Solutions</span><span>♧ Secure & Reliable</span><span>✧ Innovative Technology</span><span>◎ Your Success, Our Mission</span>
